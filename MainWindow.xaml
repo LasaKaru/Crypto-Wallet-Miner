@@ -1,0 +1,70 @@
+﻿<Window x:Class="CryptoWalletMiner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CryptoWalletMiner"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="850">
+    <Grid Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical" Margin="10">
+            <TextBlock Text="Crypto Wallet Miner" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Select Cryptocurrency:" VerticalAlignment="Center" Margin="5"/>
+                <ComboBox x:Name="cmbCrypto" Width="100" Margin="5" SelectionChanged="cmbCrypto_SelectionChanged">
+                    <ComboBox.Background>
+                        <LinearGradientBrush EndPoint="0,1">
+                            <GradientStop Color="#FFF0F0F0"/>
+                            <GradientStop Color="#FF987070" Offset="1"/>
+                        </LinearGradientBrush>
+                    </ComboBox.Background>
+                    <ComboBoxItem Content="BTC" IsSelected="True"/>
+                    <ComboBoxItem Content="ETH"/>
+                    <ComboBoxItem Content="LTC"/>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Wallet Address:" VerticalAlignment="Center" Margin="5"/>
+                <TextBox x:Name="txtWalletAddress" Width="300" Margin="5"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Button x:Name="btnStartStopMining" Content="Start Mining" Width="100" Click="btnStartStopMining_Click" Margin="5" Background="#FFA1ED9B"/>
+                <TextBlock x:Name="lblStatus" Text="Status: Idle" VerticalAlignment="Center" Margin="5"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Button x:Name="btnWithdraw" Content="Withdraw" Width="100" Click="btnWithdraw_Click" Margin="5" Background="#FFEFB7B7"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="10" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}">
+                <TextBlock Text="Mining Statistics" FontSize="16" FontWeight="Bold"/>
+                <TextBlock x:Name="lblHashRate" Text="Hash Rate: 0 H/s" Margin="5"/>
+                <TextBlock x:Name="lblTotalMined" Text="Total Mined: 0" Margin="5">
+                    <TextBlock.Background>
+                        <ImageBrush/>
+                    </TextBlock.Background>
+                </TextBlock>
+                <TextBlock x:Name="lblBalance" Text="Balance: 0" Margin="5"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="10">
+                <TextBlock Text="Mined Wallet Phrases" FontSize="16" FontWeight="Bold"/>
+                <TextBlock x:Name="lblMinedPhrases" Text="No mined phrases yet." Margin="5" Height="82" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="10">
+                <TextBlock Text="Not Mined Wallet Phrases" FontSize="16" FontWeight="Bold"/>
+                <TextBlock x:Name="lblNotMinedPhrases" Text="No not mined phrases yet." Margin="5" Height="46" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
